@@ -1,0 +1,56 @@
+*, :after, :before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Roboto Mono,Helvetica,Arial,sans-serif;
+    font-size: 11px;
+    line-height: 1.78;
+    color: #000;
+    background-color: #fff;
+}
+
+body {
+    padding: 10px;
+    min-height: 100vh;
+}
+
+html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+body, p {
+    font-weight: 300;
+    letter-spacing: .8px;
+    line-height: 25px;
+}
+
+body.minimal {
+    border: none;
+    padding: 0;
+}
+
+div {
+    display: block;
+}
+
+.imagenFondo{
+    background-image: url('../assets/img/space.jpg');
+    transform: translate3d(-4.03809px, -5.30462px, 0px);
+}
+
+
+.background-image-container {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+}
+
+
+.hero-full-container {
+    height: 100vh;
+}
