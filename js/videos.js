@@ -1,26 +1,26 @@
 let data = [
     {
         id:0,
-        titulo:'Evanescence',
+        titulo:'Evanescence - Bring Me To Life',
         video:'./assets/videos/Evanescence.mp4#t=0.5',
-        img:'./assets/img/evanescence.webp'
+        img:'./assets/img/evanescence.jpg'
     },
     {
         id:1,
-        titulo:'Aerosmith',
+        titulo:"Aerosmith - I Don't Want to Miss a Thing",
         video:'./assets/videos/Aerosmith.mp4',
-        img:'./assets/img/aerosmith.jpg',
+        img:'./assets/img/areosmith.jpg',
     },
     {
         id:2,
-        titulo:'Gorillaz',
+        titulo:'Gorillaz - Clint Eastwood',
         video:'./assets/videos/Gorillaz.mp4',
-        img:'./assets/img/Gorillaz.webp',
+        img:'./assets/img/gorillaz.jpg',
     },
     {
         id:3,
-        titulo:'Linkin_Park',
-        video:'./assets/videos/Linkin_Park.mp4',
+        titulo:'Linkin Park - Numb',
+        video:'./assets/videos/linkin-park.mp4',
         img:'./assets/img/Linkin_Park.jpg',
     },
 ]
@@ -32,8 +32,8 @@ let elementsLi = [];
 
 const source = document.getElementById("videoPrincipal")
 source.setAttribute('src',data[3]['video']);
-const titulo = document.getElementById("titulo")
-titulo.innerHTML=data[3]['titulo'];
+const tituloPrincipal = document.getElementById("titulo")
+tituloPrincipal.innerHTML=data[3]['titulo'];
 
 data.forEach(id => {
     elementsLi.push(id.titulo)
@@ -47,10 +47,23 @@ data.forEach(id => {
     videos.setAttribute('poster',data[id.id]['img'])
     const a = document.createElement('a')
     a.setAttribute('href','#')
-    a.onclick = function(){cambiarVideo(data[id.id]['video'])}
+    a.onclick = function(){cambiarVideo(data[id.id]['video'],data[id.id]['titulo'])}
     a.appendChild(videos)
     li.appendChild(a)
     ul.appendChild(li)
+
+
+
+    videos.addEventListener("mouseenter",(event)=>{
+        videos.play()
+    })
+
+    videos.addEventListener('mouseleave', function() {
+    videos.pause();
+    videos.currentTime = 0;
+    videos.setAttribute('poster',data[id.id]['img'])
+    });
+
     
 })
 
@@ -92,13 +105,15 @@ function videoPlayer(){
         video.currentTime = (duration/100)*event.target.value
     }
 
-    document.getElementById("0").addEventListener("mousemove",(event)=>{
-        if( document.getElementById("0").paused){
+   /* document.getElementById("0").addEventListener("mouseenter",(event)=>{
             document.getElementById("0").play()
-        }else{
-            document.getElementById("0").pause()
-        }
     })
+
+    document.getElementById("0").addEventListener('mouseleave', function() {
+        document.getElementById("0").pause()
+		console.log('El ratón está afuera del elemento');
+	});*/
+
 
     backwardSeconds.onclick = () =>{
         video.currentTime = video.currentTime-1
@@ -128,8 +143,9 @@ function videoPlayer(){
 }
 
 
-function cambiarVideo(video){
+function cambiarVideo(video,titulo){
     source.setAttribute('src',video);
+    tituloPrincipal.innerHTML=titulo;
 }
 
 videoPlayer();

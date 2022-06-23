@@ -29,19 +29,6 @@ body {
 
 html {
     font-family: sans-serif;
- /*   -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;*/
-}
-
-body, p {
-  /*  font-weight: 300;
-    letter-spacing: .8px;
-    line-height: 25px;*/
-}
-
-body.minimal {
-   /* border: none;
-    padding: 0;*/
 }
 
 div {
@@ -59,6 +46,7 @@ div {
     background-repeat: no-repeat;
     background-position: top;
 }
+
 
 /*********animacion para las letras***************/
 @keyframes typewriter{
@@ -81,6 +69,13 @@ div {
     color: white;
   }
 
+
+  /*******titulo***********/
+.titulo{
+  top: 65%;
+  position: absolute;
+  color: white;
+}
 /********videos***********/
 .hero-full-container {
     height: 93vh;
@@ -181,7 +176,20 @@ div {
 .scroll{
     overflow-y: scroll;
     top: 6em;
-    height: 500px;
+    margin-top: 10px;
+    height: 390px;
+    scrollbar-color: yellow #800080;
+    scrollbar-width: 10px;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+
+.scroll::-webkit-scrollbar-track {
+    background: #be1b1b;
+    border-radius: 4px;
 }
 
 .iconos{
