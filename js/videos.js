@@ -78,6 +78,8 @@ function videoPlayer(){
     const control = document.getElementById("control")
     const backwardSeconds = document.getElementById("backwardSeconds")
     const forwardSeconds = document.getElementById("forwardSeconds")
+    const mute = document.getElementById("mute")
+    const volumen = document.getElementById("volumen")
     const fullScreen = document.getElementById("fullScreen")
 
     let onFullscreen = false;
@@ -112,6 +114,19 @@ function videoPlayer(){
     };
     forwardSeconds.onclick = () =>{
         video.currentTime = video.currentTime+1
+    }
+
+    mute.onclick = () =>{
+        if(video.muted === false){
+        video.muted = true
+        volumen.className = volumen.className.replace('bi bi-volume-mute iconos' , '' )
+        volumen.setAttribute('class',"bi bi-volume-up-fill iconos")
+        }else{
+            video.muted = false
+            volumen.className = volumen.className.replace('bi bi-volume-up-fill iconos' , '' )
+            volumen.setAttribute('class',"bi bi-volume-mute iconos")
+        }
+
     }
 
     fullScreen.onclick = ()=>{
