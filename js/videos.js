@@ -34,9 +34,9 @@ function videoPlayer(){
         video.currentTime = (duration/100)*event.target.value
     }
 
-    control.addEventListener("mousemove",(event)=>{
+ /*   control.addEventListener("mousemove",(event)=>{
         console.log(event)
-    })
+    })*/
 
     backwardSeconds.onclick = () =>{
         video.currentTime = video.currentTime-1
@@ -65,4 +65,4 @@ function videoPlayer(){
     }
 }
 
-export default videoPlayer
+videoPlayer();
