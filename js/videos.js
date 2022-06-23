@@ -42,6 +42,7 @@ data.forEach(id => {
     videos.setAttribute('class','videos')
     videos.setAttribute('id',data[id.id]['id'])
     videos.setAttribute('src',data[id.id]['video'])
+    videos.muted = true;
     videos.setAttribute('poster',data[id.id]['img'])
     li.appendChild(videos)
     ul.appendChild(li)
@@ -86,7 +87,11 @@ function videoPlayer(){
     }
 
     document.getElementById("0").addEventListener("mousemove",(event)=>{
-       alert('rfghf');
+        if( document.getElementById("0").played){
+            document.getElementById("0").pause()
+        }else{
+            document.getElementById("0").play()
+        }
     })
 
     backwardSeconds.onclick = () =>{
