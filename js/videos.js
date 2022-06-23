@@ -32,7 +32,8 @@ let elementsLi = [];
 
 const source = document.getElementById("videoPrincipal")
 source.setAttribute('src',data[3]['video']);
-
+const titulo = document.getElementById("titulo")
+titulo.innerHTML=data[3]['titulo'];
 
 data.forEach(id => {
     elementsLi.push(id.titulo)
@@ -44,8 +45,13 @@ data.forEach(id => {
     videos.setAttribute('src',data[id.id]['video'])
     videos.muted = true;
     videos.setAttribute('poster',data[id.id]['img'])
-    li.appendChild(videos)
+    const a = document.createElement('a')
+    a.setAttribute('href','#')
+    a.onclick = function(){cambiarVideo(data[id.id]['video'])}
+    a.appendChild(videos)
+    li.appendChild(a)
     ul.appendChild(li)
+    
 })
 
 
@@ -87,10 +93,10 @@ function videoPlayer(){
     }
 
     document.getElementById("0").addEventListener("mousemove",(event)=>{
-        if( document.getElementById("0").played){
-            document.getElementById("0").pause()
-        }else{
+        if( document.getElementById("0").paused){
             document.getElementById("0").play()
+        }else{
+            document.getElementById("0").pause()
         }
     })
 
@@ -121,5 +127,9 @@ function videoPlayer(){
     console.log(data);
 }
 
+
+function cambiarVideo(video){
+    source.setAttribute('src',video);
+}
 
 videoPlayer();
