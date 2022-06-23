@@ -60,7 +60,7 @@ data.forEach(id => {
 
     videos.addEventListener('mouseleave', function() {
     videos.pause();
-    videos.currentTime = 0;
+    videos.currentTime = 1.5;
     videos.setAttribute('poster',data[id.id]['img'])
     });
 
@@ -72,7 +72,7 @@ data.forEach(id => {
 
 function videoPlayer(){
     const video = document.getElementById("videoPrincipal")
-
+    const iconoplay = document.getElementById("iconoplay")
     const videoContainer = document.getElementById("video-container")
     const play = document.getElementById("play")
     const control = document.getElementById("control")
@@ -83,15 +83,17 @@ function videoPlayer(){
     let onFullscreen = false;
     let duration;
 
-/*console.log('ghfgh');
-    const source = document.getElementById("principal")
-    source.setAttribute('src',data[0]['video']);*/
-
     video.removeAttribute("controls")
-  /* video.addEventListener("playing",()=>{
+    
+   video.addEventListener("playing",()=>{
+    iconoplay.className = iconoplay.className.replace('bi bi-play-fill iconos' , '' )
+    iconoplay.setAttribute('class',"bi bi-pause-circle-fill iconos")
     })
+    
     video.addEventListener("pause",()=>{
-    })*/
+        iconoplay.className = iconoplay.className.replace('bi-pause-circle-fill' , '' )
+        iconoplay.setAttribute('class',"bi bi-play-fill iconos")
+    })
 
     video.addEventListener("loadeddata",(event)=>{
         duration = event.target.duration
@@ -104,16 +106,6 @@ function videoPlayer(){
     control.oninput = (event)=>{
         video.currentTime = (duration/100)*event.target.value
     }
-
-   /* document.getElementById("0").addEventListener("mouseenter",(event)=>{
-            document.getElementById("0").play()
-    })
-
-    document.getElementById("0").addEventListener('mouseleave', function() {
-        document.getElementById("0").pause()
-		console.log('El ratón está afuera del elemento');
-	});*/
-
 
     backwardSeconds.onclick = () =>{
         video.currentTime = video.currentTime-1
@@ -138,8 +130,6 @@ function videoPlayer(){
             video.pause()
         }
     }
-
-    console.log(data);
 }
 
 
