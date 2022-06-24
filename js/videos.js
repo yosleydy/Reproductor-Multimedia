@@ -32,6 +32,7 @@ let elementsLi = [];
 
 const source = document.getElementById("videoPrincipal")
 source.setAttribute('src',data[3]['video']);
+source.setAttribute('name','3');
 const tituloPrincipal = document.getElementById("titulo")
 tituloPrincipal.innerHTML=data[3]['titulo'];
 
@@ -80,6 +81,7 @@ function videoPlayer(){
     const forwardSeconds = document.getElementById("forwardSeconds")
     const mute = document.getElementById("mute")
     const volumen = document.getElementById("volumen")
+    const siguiente = document.getElementById("siguiente")
     const fullScreen = document.getElementById("fullScreen")
 
     let onFullscreen = false;
@@ -128,6 +130,11 @@ function videoPlayer(){
         }
 
     }
+    
+    
+ /*   siguiente.onclick = () =>{
+            siguienteVideo(video.getAttribute('name'))
+    }*/
 
     fullScreen.onclick = ()=>{
         if(onFullscreen){
@@ -138,6 +145,7 @@ function videoPlayer(){
             videoContainer.requestFullscreen()
         }
     };
+
     play.onclick = ()=>{
         if(video.paused){
             video.play()
@@ -151,6 +159,24 @@ function videoPlayer(){
 function cambiarVideo(video,titulo){
     source.setAttribute('src',video);
     tituloPrincipal.innerHTML=titulo;
+}
+
+function siguienteVideo(id){
+    let elementos = data.length-1
+    console.log(elementos)
+    console.log(id)
+    if(elementos >= id){
+        console.log('dentro de if')
+        id += 1;
+        console.log(id)
+        let videoS = data[id]['video']
+        console.log(videoS)
+        let tituloS = data[id]['titulo']
+        source.setAttribute('src',videoS);
+        tituloPrincipal.innerHTML=tituloS;
+    }
+   
+   
 }
 
 videoPlayer();
